@@ -1,0 +1,197 @@
+﻿@page "/"
+@using Demo.ApiClient;
+@using Demo.ApiClient.Models.ApiModels;
+@inject DemoApiClientService apiClient
+
+<div class="card">
+    <div class="card-body p-0">
+        <table class="table table-striped mb-0">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Signed Up</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Student Id</th>
+                    <th>Question Asked</th>
+                    <th>Date</th>
+                    <th>Answer</th>
+                    <th>Solved</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input @bind="addCulturalEventModel.EventName" class="form-control" placeholder="Event Name" />
+                    </td>
+                    <td>
+                        <input @bind="addCulturalEventModel.Date" type="date" class="form-control" />
+                    </td>
+                    <td>
+                        <input @bind="addCulturalEventModel.Description" class="form-control" placeholder="Description" />
+                    </td>
+                    <td>
+                        <input @bind="addCulturalEventModel.SignedUp" type="checkbox" class="form-check-input" />
+                    </td>
+                    <td>
+                        <a @onclick="AddCulturalEvent" href="javascript:void(0)">Save</a>
+                    </td>
+                </tr>
+                @if (culturalEvents?.Any() ?? false)
+                {
+                    @foreach (var culturalEvent in culturalEvents)
+                    {
+                        <CulturalEventRowItemComponent CulturalEventRowItem="culturalEvent"
+                                                 OnEdit="EditCulturalEvent"
+                                                 OnDelete="DeleteCulturalEvent" />
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td class="text-center" colspan="5">- No Cultural Events -</td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        <input @bind="addQuestionModel.StudentId" class="form-control" placeholder="Student Id" />
+                    </td>
+                    <td>
+                        <input @bind="addQuestionModel.QuestionAsked" class="form-control" placeholder="Question" />
+                    </td>
+                    <td>
+                        <input @bind="addQuestionModel.Date" type="date" class="form-control" />
+                    </td>
+                    <td>
+                        <input @bind="addQuestionModel.Answer" class="form-control" placeholder="Answer" />
+                    </td>
+                    <td>
+                        <input @bind="addQuestionModel.Solved" type="checkbox" class="form-check-input" />
+                    </td>
+                    <td>
+                        <a @onclick="AddQuestion" href="javascript:void(0)">Save</a>
+                    </td>
+                </tr>
+                @if (questions?.Any() ?? false)
+                {
+                    @foreach (var question in questions)
+                    {
+                        <QuestionRowItemComponent QuestionRowItem="question"
+                                                       OnEdit="EditQuestion"
+                                                       OnDelete="DeleteQuestion" />
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td class="text-center" colspan="5">- No Questions -</td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        <input @bind="addCulturalEventModel.EventName" class="form-control" placeholder="Event Name" />
+                    </td>
+                    <td>
+                        <input @bind="addCulturalEventModel.Date" type="date" class="form-control" />
+                    </td>
+                    <td>
+                        <input @bind="addCulturalEventModel.Description" class="form-control" placeholder="Description" />
+                    </td>
+                    <td>
+                        <input @bind="addCulturalEventModel.SignedUp" type="checkbox" class="form-check-input" />
+                    </td>
+                    <td>
+                        <a @onclick="AddCulturalEvent" href="javascript:void(0)">Save</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input @bind="addQuestionModel.StudentId" class="form-control" placeholder="Student Id" />
+                    </td>
+                    <td>
+                        <input @bind="addQuestionModel.QuestionAsked" class="form-control" placeholder="Question" />
+                    </td>
+                    <td>
+                        <input @bind="addQuestionModel.Date" type="date" class="form-control" />
+                    </td>
+                    <td>
+                        <input @bind="addQuestionModel.Answer" class="form-control" placeholder="Answer" />
+                    </td>
+                    <td>
+                        <input @bind="addQuestionModel.Solved" type="checkbox" class="form-check-input" />
+                    </td>
+                    <td>
+                        <a @onclick="AddQuestion" href="javascript:void(0)">Save</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    private List<CulturalEvent>? culturalEvents;
+    private CulturalEvent addCulturalEventModel = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await LoadCulturalEvents();
+        await LoadQuestions();
+    }
+
+    private async Task LoadCulturalEvents()
+    {
+        culturalEvents = await apiClient.GetCulturalEvents();
+    }
+
+    private async Task AddCulturalEvent()
+    {
+        await apiClient.SaveCulturalEvent(addCulturalEventModel);
+        await LoadCulturalEvents();
+        addCulturalEventModel = new();
+    }
+
+    private async Task EditCulturalEvent(CulturalEvent culturalEvent)
+    {
+        await apiClient.UpdateCulturalEvent(culturalEvent);
+        await LoadCulturalEvents();
+    }
+
+    private async Task DeleteCulturalEvent(int id)
+    {
+        await apiClient.DeleteCulturalEvent(id);
+        await LoadCulturalEvents();
+    }
+
+    private List<Question>? questions;
+    private Question addQuestionModel = new();
+
+    private async Task LoadQuestions()
+    {
+        questions = await apiClient.GetQuestions();
+    }
+
+    private async Task AddQuestion()
+    {
+        await apiClient.SaveQuestion(addQuestionModel);
+        await LoadQuestions();
+        addQuestionModel = new();
+    }
+
+    private async Task EditQuestion(Question question)
+    {
+        await apiClient.UpdateQuestion(question);
+        await LoadQuestions();
+    }
+
+    private async Task DeleteQuestion(int id)
+    {
+        await apiClient.DeleteQuestion(id);
+        await LoadQuestions();
+    }
+}

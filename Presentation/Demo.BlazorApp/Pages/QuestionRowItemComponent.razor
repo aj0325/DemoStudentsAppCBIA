@@ -1,0 +1,61 @@
+﻿@using Demo.ApiClient.Models.ApiModels;
+
+@if (QuestionRowItem is not null)
+{
+    <tr>
+        @if (!isEditMode)
+        {
+            <td>@QuestionRowItem.Id</td>
+            <td>@QuestionRowItem.StudentId</td>
+            <td>@QuestionRowItem.QuestionAsked</td>
+            <td>@QuestionRowItem.Date</td>
+            <td>@QuestionRowItem.Answer</td>
+            <td>@QuestionRowItem.Solved</td>
+            <td>
+                <a @onclick="() => isEditMode = true" href="javascript:void(0)">Edit</a>
+                <a @onclick="async () => await OnDelete.InvokeAsync(QuestionRowItem.Id)" href="javascript:void(0)">Delete</a>
+            </td>
+        }
+        else
+        {
+            <td>
+                <input @bind="QuestionRowItem.StudentId" class="form-control" />
+            </td>
+            <td>
+                <input @bind="QuestionRowItem.QuestionAsked" class="form-control" />
+            </td>
+            <td>
+                <input @bind="QuestionRowItem.Date" type="date" class="form-control" />
+            </td>
+            <td>
+                <input @bind="QuestionRowItem.Answer" class="form-control" />
+            </td>
+            <td>
+                <input @bind="QuestionRowItem.Solved" type="checkbox" class="form-check-input" />
+            </td>
+            <td>
+                <a @onclick="Update" href="javascript:void(0)">Save</a>
+                <a @onclick="() => isEditMode = false" href="javascript:void(0)">Cancel</a>
+            </td>
+        }
+    </tr>
+}
+
+@code {
+    [Parameter]
+    public Question? QuestionRowItem { get; set; }
+
+    [Parameter]
+    public EventCallback<Question> OnEdit { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnDelete { get; set; }
+
+    private bool isEditMode = false;
+
+    private async Task Update()
+    {
+        await OnEdit.InvokeAsync(QuestionRowItem);
+        isEditMode = false;
+    }
+}
