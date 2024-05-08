@@ -9,6 +9,31 @@ using System.Threading.Tasks;
 
 namespace Demo.DemoCBIA.Models
 {
+    public class Resources
+    {
+        public ObservableCollection<Restaurant> Restaurants { get; set; }
+        public ObservableCollection<Hospital> Hospitals { get; set; }
+    
+        public Resources()
+        {
+            Restaurants = new ObservableCollection<Restaurant>();
+            Hospitals = new ObservableCollection<Hospital>();
+        }
+    }
+    
+    public class Restaurant
+    {
+        public string Name { get; set; }
+        public Location Location { get; set; }
+        // Add other properties specific to a restaurant
+    }
+    
+    public class Hospital
+    {
+        public string Name { get; set; }
+        public Location Location { get; set; }
+        // Add other properties specific to a hospital
+    }
     public class AccommodationDetails
     {
         // Properties
