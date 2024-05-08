@@ -20,7 +20,7 @@ https://github.com/SyncfusionExamples/getting-started-with-.net-maui-accordion
 PdfViewer:
 https://github.com/syncfusion/maui-demos/tree/master/MAUI/PdfViewer
 
-Keys added:
+## Keys added:
 
 Syncfusion key in App.xaml.cs
 
