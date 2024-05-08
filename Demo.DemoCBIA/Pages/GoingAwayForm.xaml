@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo.DemoCBIA.Pages.GoingAwayForm"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
+             Title="Going Away Form">
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+            <Label Text="Student Trip Form" FontAttributes="Bold" FontSize="22" HorizontalOptions="Center" />
+
+            <!-- Personal Information -->
+            <Entry x:Name="studentNameEntry" Placeholder="Student Name" Keyboard="Default" />
+            <Entry x:Name="studentIdEntry" Placeholder="Student ID" />
+            <Entry x:Name="tripNameEntry" Placeholder="Trip Name" />
+            <Entry x:Name="phoneNumber" Placeholder="Contact Number" Keyboard="Numeric"/>
+
+
+            <!-- Trip Details -->
+            <Label Text="Departure Date"/>
+            <DatePicker x:Name="departureDate"  />
+            <Label Text="Return Date"/>
+            <DatePicker x:Name="returnDate" />
+            <Entry x:Name="destinationEntry" Placeholder="Destination" />
+            <Editor x:Name="purposeEditor" Placeholder="Purpose of Trip" HeightRequest="50" />
+            
+
+            <!-- Submit Button -->
+            <Button Text="Submit" Clicked="OnSubmitClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

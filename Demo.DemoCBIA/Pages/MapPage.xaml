@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:local="clr-namespace:Demo.DemoCBIA.ViewModels" ios:Page.UseSafeArea="False" Shell.NavBarIsVisible="true"
+             x:Class="Demo.DemoCBIA.Pages.MapPage"
+             Title="Map">
+    <ContentPage.BindingContext>
+        <local:MapViewModel/>
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="*, Auto" IgnoreSafeArea="true">
+        <maps:Map x:Name="map" ItemsSource="{Binding Cities}" MapClicked="Map_Clicked">
+            <x:Arguments>
+                <maps:MapSpan>
+                    <x:Arguments>
+                        <sensors:Location>
+                            <x:Arguments>
+                                <x:Double>34</x:Double>
+                                <x:Double>13</x:Double>
+                            </x:Arguments>
+                        </sensors:Location>
+                        <x:Double>24</x:Double>
+                        <x:Double>24</x:Double>
+                    </x:Arguments>
+                </maps:MapSpan>
+            </x:Arguments>
+            <maps:Map.ItemTemplate>
+                <DataTemplate>
+                    <maps:Pin Label="{Binding Name}" Location="{Binding Location}" MarkerClicked="Pin_MarkerClicked" Type="Place"/>
+                </DataTemplate>
+            </maps:Map.ItemTemplate>
+        </maps:Map>
+        <dxco:BottomSheet x:Name="bottomSheet" ShowGrabber="True" AllowDismiss="True" IsModal="false" Grid.Row="1" Padding="0">
+            <dx:DXStackLayout Orientation="Vertical" Margin="0,16,0,0">
+                <Label Text="{Binding SelectedCity.Name}" FontSize="18" Margin="16,0,0,0"/>
+                <Label Text="{Binding SelectedCity.Address}" Style="{StaticResource paleLabelStyle}" Margin="16,0,0,0"/>
+                <ScrollView Orientation="Horizontal" Margin="16,10,0,0">
+                    <dx:DXStackLayout Orientation="Horizontal">
+
+                        <dx:DXButton Icon="info" Content="Info" Style="{StaticResource actionButton}">
+                        </dx:DXButton>
+                        <dx:DXButton Icon="bookmark" Content="Save" Style="{StaticResource actionButtonOutlined}">
+                        </dx:DXButton>
+                        <dx:DXButton Icon="share" Content="Share" Style="{StaticResource actionButtonOutlined}">
+                        </dx:DXButton>
+                    </dx:DXStackLayout>
+                </ScrollView>
+                <ScrollView Orientation="Horizontal" Margin="16,10,0,0">
+                    <dx:DXStackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding SelectedCity.ImagePaths}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Border StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="0" Margin="0,0,8,0">
+                                    <Grid>
+                                        <dx:DXImage Source="{Binding Path=.}" Aspect="AspectFill"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </dx:DXStackLayout>
+                </ScrollView>
+                <FlexLayout AlignItems="Center" BindableLayout.ItemsSource="{Binding SelectedCity.AdditionalActions}" Wrap="Wrap" Margin="16,20,0,0">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type local:ActionItem}">
+                            <dx:DXStackLayout Orientation="Vertical" Margin="5" HorizontalOptions="Center" FlexLayout.Basis="25%">
+                                <dx:DXButton Icon="{Binding IconPath}" HeightRequest="40" MinimumWidthRequest="40" WidthRequest="40" CornerRadius="20" BackgroundColor="{Binding Color}" HorizontalOptions="Center" Padding="0" Clicked="ActionButton_Clicked" CommandParameter="{Binding Name}">
+                                    <!--<dx:DXImage Source="{Binding IconPath}" TintColor="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource Gray950}}" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="24" HeightRequest="24"/>-->
+                                </dx:DXButton>
+                                <Label Text="{Binding Name}" Style="{AppThemeBinding Light={StaticResource paleLabelStyle}, Dark=White}" Margin="0,8,0,0" HorizontalOptions="Center"/>
+                            </dx:DXStackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+                <dx:DXSeparator HeightRequest="1" BackgroundColor="{AppThemeBinding Light=#CAC4D0, Dark=#625A71}" Margin="20,20,20,20"/>
+                <Label Text="{Binding SelectedCity.Description}" LineHeight="1.5" LineBreakMode="WordWrap" Margin="16,0,0,0"/>
+            </dx:DXStackLayout>
+        </dxco:BottomSheet>
+    </Grid>
+</ContentPage>

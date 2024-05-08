@@ -1,0 +1,45 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Demo.DemoCBIA"
+             xmlns:converters="clr-namespace:Demo.DemoCBIA.Converters"
+             x:Class="Demo.DemoCBIA.Pages.AddQuestionPage"
+             Title="Add new question">
+    <ContentPage.Resources>
+        <local:StringNullOrEmpty x:Key="stringVisiblity" />
+        <converters:SolvedStatusConverter x:Key="SolvedStatusConverter" />
+    </ContentPage.Resources>
+
+    <Grid Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Text="Student ID:" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" />
+        <Entry x:Name="txtSId" Grid.Row="0" Grid.Column="1" WidthRequest="220"/>
+
+        <Label Text="Question:" Grid.Row="1" VerticalOptions="Center" Grid.Column="0"/>
+        <Entry x:Name="txtQuestion" Grid.Row="1" Grid.Column="1" Placeholder="Question" />
+
+        <Label Text="Answer:" Grid.Row="2" VerticalOptions="Center" Grid.Column="0"/>
+        <Label x:Name="txtAnswer" Grid.Row="2" Grid.Column="1" Text="{Binding Answer, Converter={StaticResource stringVisiblity}}" />
+
+        <Label Text="Date:" Grid.Row="3" VerticalOptions="Center" Grid.Column="0" />
+        <DatePicker x:Name="dpDate" Grid.Row="3" Grid.Column="1" />
+
+        <Label Text="Mark as solved?" Grid.Row="4" VerticalOptions="Center" Grid.Column="0" />
+        <CheckBox x:Name="swSolved" Grid.Row="4" Grid.Column="1" VerticalOptions="Center" />
+
+        <Button x:Name="btnSave" Text="Save" Grid.Row="5" Margin="0,20" Clicked="btnSave_Clicked" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnCancel" Text="Cancel" Grid.Row="6" Clicked="btnCancel_Clicked"  Grid.ColumnSpan="2"/>
+    </Grid>
+</ContentPage>

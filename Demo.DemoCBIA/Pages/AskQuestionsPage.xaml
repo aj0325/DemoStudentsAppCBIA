@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Demo.DemoCBIA"
+             xmlns:converters="clr-namespace:Demo.DemoCBIA.Converters"
+             x:Class="Demo.DemoCBIA.Pages.AskQuestionsPage"
+             Title="Ask Questions">
+    <ContentPage.Resources>
+        <local:StringNullOrEmpty x:Key="stringVisiblity" />
+        <converters:SolvedStatusConverter x:Key="SolvedStatusConverter" />
+    </ContentPage.Resources>
+    <FlexLayout Direction="Column">
+        <HorizontalStackLayout Padding="10" FlexLayout.Basis="120">
+            <Button x:Name="btnAdd" Text="Add a Question" Margin="0,0,10,0" Clicked="btnAdd_Clicked" />
+            <Button x:Name="btnShowProducts" Text="Show Questions" Clicked="btnShowQuestions_Clicked" />
+        </HorizontalStackLayout>
+        <ListView x:Name="questionsList" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="questionListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout Padding="5">
+                            <Label Text="{Binding QuestionAsked}" FontSize="17" FontAttributes="Bold" />
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Date}" />
+                                <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                                    <Label FontAttributes="Bold" TextColor="Red" LineBreakMode="WordWrap" VerticalOptions="Start" Text="{Binding Answer, Converter={StaticResource stringVisiblity}}"/>
+                                </ScrollView>
+                                <!--<Label Grid.Row="1" Grid.Column="0" Text="{Binding Answer}" LineBreakMode="WordWrap" VerticalOptions="Start" TextColor="Red" />
+                                <CheckBox Grid.Row="0"  Grid.Column="2" VerticalOptions="Center" IsChecked="{Binding Solved}" /> -->
+                                <Label Grid.Row="0" Grid.Column="2" VerticalOptions="Center" Text="{Binding Solved, Converter={StaticResource SolvedStatusConverter}}" />
+                            </Grid>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </FlexLayout>
+</ContentPage>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             x:Class="Demo.DemoCBIA.Pages.ProfileEditPage"
+             Title="Edit personal information">
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30">
+            <dxe:TextEdit PlaceholderText="Name" Text="{Binding Profile.Name, Mode=TwoWay}" x:Name="editName"/>
+            <dxe:TextEdit PlaceholderText="Email" Text="{Binding Profile.Email, Mode=TwoWay}" x:Name="editEmail" Keyboard="Email"/>
+            <dxe:TextEdit PlaceholderText="Phone Number" Text="{Binding Profile.PhoneNumber, Mode=TwoWay}" x:Name="editPhoneno" Keyboard="Numeric"/>
+            <dxe:DateEdit PlaceholderText="Date of Birth" Date="{Binding Profile.DateOfBirth, Mode=TwoWay}" x:Name="editDOB"/>
+            <dxe:TextEdit PlaceholderText="Address" Text="{Binding Profile.Address, Mode=TwoWay}" x:Name="editAddress"/>
+            <dxe:ComboBoxEdit ItemsSource="{Binding GenderOptions}" PlaceholderText="Gender" SelectedItem="{Binding Profile.Gender, Mode=TwoWay}" x:Name="editGender"/>
+            <dxe:TextEdit PlaceholderText="Blood Group" Text="{Binding Profile.BloodGroup}" x:Name="editBG"/>
+            <dxe:ComboBoxEdit ItemsSource="{Binding DietaryOptions}" PlaceholderText="Dietary Preference" SelectedItem="{Binding Profile.DietaryPreference}" x:Name="editDietaryPreference"/>
+            <dxe:TextEdit PlaceholderText="Emergency Contact Name" Text="{Binding Profile.EmergencyContactName}" x:Name="editEmergencyContactName"/>
+            <dxe:TextEdit PlaceholderText="Emergency Phone Number" Text="{Binding Profile.EmergencyPhoneNumber}" x:Name="editEmergencyPhoneno" Keyboard="Numeric"/>
+            <dxe:TextEdit PlaceholderText="Emergency Contact Relationship" Text="{Binding Profile.EmergencyContactRelationship}" x:Name="editEmergencyRelation"/>
+            <dxe:ImageEdit  Source="{Binding Profile.ImageSource}" x:Name="editImage"/>
+
+            <!-- Add other fields as necessary -->
+
+            <Button Text="Save" Clicked="OnSaveButtonClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

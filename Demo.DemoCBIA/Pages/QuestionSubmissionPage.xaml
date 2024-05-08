@@ -1,0 +1,15 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:local="clr-namespace:Demo.DemoCBIA.Pages"
+             x:Class="Demo.DemoCBIA.Pages.QuestionSubmissionPage">
+
+    <StackLayout>
+        <Entry x:Name="StudentIdEntry" Placeholder="Enter Student ID" />
+        <Entry x:Name="StudentNameEntry" Placeholder="Enter Student Name" />
+        <Editor x:Name="QuestionEntry" Placeholder="Enter your question" />
+        
+        <Button Text="Submit" Clicked="OnSubmitClicked" />
+    </StackLayout>
+
+</ContentPage>

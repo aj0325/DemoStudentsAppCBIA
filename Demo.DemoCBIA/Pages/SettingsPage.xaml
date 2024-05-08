@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo.DemoCBIA.Pages.SettingsPage"
+             Title="Settings">
+    <ContentPage.Content>
+        <ListView x:Name="SettingsListView" ItemSelected="SettingsListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding}" TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsSource >
+
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>General</x:String>
+                    <x:String>Notifications</x:String>
+                </x:Array>
+            </ListView.ItemsSource>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

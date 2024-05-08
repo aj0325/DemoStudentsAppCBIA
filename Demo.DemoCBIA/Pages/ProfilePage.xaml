@@ -1,0 +1,88 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo.DemoCBIA.Pages.ProfilePage"
+             Title="Profile">
+
+    <ScrollView>
+        <Grid Padding="30" RowSpacing="10">
+            <!-- Define grid columns -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Define grid rows -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ImageButton Source="{AppThemeBinding Light=pencil_black.png, Dark=pencil_white.png}" Clicked="EditButton_Clicked" Grid.Column="2" Grid.Row="0"/>
+            <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Source="{Binding Profile.ImageSource}" Aspect="AspectFit" />
+            <!-- Name label and value -->
+            <Label Text="First Name" Grid.Row="2" Grid.Column="0" />
+            <Label Text="{Binding Profile.Name}" Grid.Row="2" Grid.Column="1" />
+
+            <!-- Last Name label and value -->
+            <Label Text="Last Name" Grid.Row="3" Grid.Column="0" />
+            <Label Text="{Binding Profile.LastName}" Grid.Row="3" Grid.Column="1" />
+
+            <!-- Email label and value -->
+            <Label Text="Email" Grid.Row="4" Grid.Column="0" />
+            <Label Text="{Binding Profile.Email}" Grid.Row="4" Grid.Column="1" />
+
+            <!-- Phone Number label and value -->
+            <Label Text="Phone Number" Grid.Row="5" Grid.Column="0" />
+            <Label Text="{Binding Profile.PhoneNumber}" Grid.Row="5" Grid.Column="1" />
+
+            <!-- Date of Birth label and value -->
+            <Label Text="Date of Birth" Grid.Row="6" Grid.Column="0" />
+            <Label Text="{Binding Profile.DateOfBirth, StringFormat='{0:yyyy-MM-dd}'}" Grid.Row="6" Grid.Column="1" />
+
+            <!-- Address label and value -->
+            <Label Text="Address" Grid.Row="7" Grid.Column="0" />
+            <Label Text="{Binding Profile.Address}" Grid.Row="7" Grid.Column="1" />
+
+            <!-- Gender label and value -->
+            <Label Text="Gender" Grid.Row="8" Grid.Column="0" />
+            <Label Text="{Binding Profile.Gender}" Grid.Row="8" Grid.Column="1" />
+
+            <!-- Blood Group label and value -->
+            <Label Text="Blood Group" Grid.Row="9" Grid.Column="0" />
+            <Label Text="{Binding Profile.BloodGroup}" Grid.Row="9" Grid.Column="1" />
+
+            <!-- Dietary Preference label and value -->
+            <Label Text="Dietary Preference" Grid.Row="10" Grid.Column="0" />
+            <Label Text="{Binding Profile.DietaryPreference}" Grid.Row="10" Grid.Column="1" />
+
+            <!-- Emergency Contact Name label and value -->
+            <Label Text="Emergency Contact Name" Grid.Row="11" Grid.Column="0" />
+            <Label Text="{Binding Profile.EmergencyContactName}" Grid.Row="11" Grid.Column="1" />
+
+            <!-- Emergency Phone Number label and value -->
+            <Label Text="Emergency Phone Number" Grid.Row="12" Grid.Column="0" />
+            <Label Text="{Binding Profile.EmergencyPhoneNumber}" Grid.Row="12" Grid.Column="1" />
+
+            <!-- Emergency Contact Relationship label and value -->
+            <Label Text="Emergency Contact Relationship" Grid.Row="13" Grid.Column="0" />
+            <Label Text="{Binding Profile.EmergencyContactRelationship}" Grid.Row="13" Grid.Column="1" />
+
+            <!-- Profile Image -->
+            <!-- Ensure the image source is correctly bound and accessible -->
+
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

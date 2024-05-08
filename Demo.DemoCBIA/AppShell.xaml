@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Demo.DemoCBIA.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Demo.DemoCBIA.Pages"
+    xmlns:pages="clr-namespace:Demo.DemoCBIA.Pages"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.TabBarIsVisible="True">
+
+
+    
+
+    <ShellContent
+        FlyoutItemIsVisible="False"
+        ContentTemplate="{DataTemplate local:LoginPage}"
+        Route="LoginPage" />
+    
+    
+    <ShellContent
+        FlyoutItemIsVisible="False"
+        ContentTemplate="{DataTemplate local:MapPage}"
+        Route="MapPage" />
+    <ShellContent
+        FlyoutItemIsVisible="False"
+        ContentTemplate="{DataTemplate local:cityhandbook}"
+        Route="cityhandbook" />
+    <ShellContent
+        FlyoutItemIsVisible="False"
+        ContentTemplate="{DataTemplate local:orientfilepage}"
+        Route="orientfilepage" />
+    <ShellContent
+        FlyoutItemIsVisible="False"
+        ContentTemplate="{DataTemplate local:GoingAwayForm}"
+        Route="GoingAwayForm" />
+    <ShellContent
+        FlyoutItemIsVisible="False"
+        ContentTemplate="{DataTemplate local:ProfileEditPage}"
+        Route="ProfileEditPage" />
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title ="Home" Icon="{AppThemeBinding Light=home.png, Dark=home_white.png}" Route="MainPage" ContentTemplate="{DataTemplate pages:MainPage}"   />
+        <ShellContent Title="Profile" Route="ProfilePage" Icon="{AppThemeBinding Light=profile.png, Dark=profile_white.png}" ContentTemplate="{DataTemplate pages:ProfilePage}" />
+        <ShellContent Title="Courses" Icon="{AppThemeBinding Light=courses_black.png, Dark=courses_white.png}" ContentTemplate="{DataTemplate pages:CoursesPage}" />
+        <ShellContent Title="Orientation Files" Icon="{AppThemeBinding Light=folder.png, Dark=folder_white.png}" ContentTemplate="{DataTemplate pages:OrientationFilesPage}" />
+        <ShellContent Title="Key Program Dates" Icon="{AppThemeBinding Light=calendar_black.png, Dark=calendar_white.png}" ContentTemplate="{DataTemplate pages:KeyDatesPage}" />
+        <ShellContent Title="Cultural Events" Icon="{AppThemeBinding Light=events.png, Dark=events_white.png}" ContentTemplate="{DataTemplate pages:CulturalEventsPage}" />
+        <ShellContent Title="City Handbook" Icon="{AppThemeBinding Light=buildings.png, Dark=buildings_white.png}" ContentTemplate="{DataTemplate pages:CityPage}" />
+        <ShellContent Title="Trips" Icon="{AppThemeBinding Light=airplane.png, Dark=airplane_white.png}" Route="TripsPage"  ContentTemplate="{DataTemplate pages:TripsPage}" />
+        <ShellContent FlyoutItemIsVisible="False" Title="Document Library" Icon="docs.png" ContentTemplate="{DataTemplate pages:DocLibraryPage}" />
+        <ShellContent Title="FAQs" Icon="{AppThemeBinding Light=faq.png, Dark=faq_white.png}" ContentTemplate="{DataTemplate pages:FAQPage}" />
+        <ShellContent Title="Accomodation Details" Icon="{AppThemeBinding Light=accomodation.png, Dark=accomodation_white.png}" ContentTemplate="{DataTemplate pages:AccomodationsPage}" />
+        <ShellContent Title="Task Area" Icon="{AppThemeBinding Light=planning.png, Dark=planning_white.png}" ContentTemplate="{DataTemplate pages:TaskAreaPage}" />
+        <ShellContent Title="Ask Questions" Icon="{AppThemeBinding Light=questions.png, Dark=questions_white.png}" ContentTemplate="{DataTemplate pages:AskQuestionsPage}" />
+        <ShellContent Title="Settings" Icon="{AppThemeBinding Light=setting.png, Dark=setting_white.png}" ContentTemplate="{DataTemplate pages:SettingsPage}" />
+        <ShellContent
+            Title="Logout"
+            Icon="{AppThemeBinding Light=exit.png, Dark=exit_white.png}"
+            ContentTemplate="{DataTemplate local:LoginPage}"
+            Route="Logout" />
+    </FlyoutItem>
+
+    
+
+</Shell>

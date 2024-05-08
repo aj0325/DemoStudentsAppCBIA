@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo.DemoCBIA.Pages.LoginPage"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             Shell.NavBarIsVisible="false"
+             Shell.TabBarIsVisible="False"
+             Title="Login">
+    <ScrollView>
+        <dx:DXStackLayout>
+            <dx:DXStackLayout Margin="10,40,10,0" ItemSpacing="20">
+                <Label
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    Text="Login or sign up"
+                    TextColor="#505050" />
+                <dxe:TextEdit
+                    x:Name="userIdEdit"
+                    ErrorText="Login is required"
+                    HasError="{Binding LoginHasError}"
+                    HelpText="*Required"
+                    LabelText="Login"
+                    PlaceholderText="Enter login"
+                    StartIcon="face_black_24dp"
+                    Text="{Binding Login, Mode=TwoWay}"
+                    TextChanged="OnTextEditTextChanged" />
+                <dxe:PasswordEdit
+                    x:Name="passwordEdit"
+                    ErrorText="The password should contain more than 5 characters, have at least one uppercase and one lowercase letter, and one number."
+                    HasError="{Binding PasswordHasError}"
+                    HelpText="*Required"
+                    LabelText="Password"
+                    MinimumHeightRequest="30"
+                    PlaceholderText="Enter password"
+                    StartIcon="password_black_24dp"
+                    Text="{Binding Password, Mode=TwoWay}"
+                    TextChanged="OnTextEditTextChanged" />
+                <dx:DXButton
+                    Clicked="OnLoginClicked"
+                    
+                    Content="Login" />
+            </dx:DXStackLayout>
+        </dx:DXStackLayout>
+    </ScrollView>
+</ContentPage>

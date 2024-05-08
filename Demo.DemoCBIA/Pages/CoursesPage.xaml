@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+             x:Class="Demo.DemoCBIA.Pages.CoursesPage"
+             Title="Courses">
+    <dxg:DataGridView ItemsSource="{Binding Courses}" IsHorizontalScrollBarVisible="True">
+        <!-- Column definitions -->
+
+        <dxg:TextColumn FieldName="Title" Width="120"/>
+        <dxg:TextColumn FieldName="Description" Width="200"/>
+        <dxg:DateColumn FieldName="StartDate" Width="200"/>
+        <dxg:DateColumn FieldName="EndDate" Width="200"/>
+        
+
+
+    </dxg:DataGridView>
+</ContentPage>
+    
+    

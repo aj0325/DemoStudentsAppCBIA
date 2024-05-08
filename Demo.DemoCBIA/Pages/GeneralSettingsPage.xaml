@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo.DemoCBIA.Pages.GeneralSettingsPage"
+             Title="General Settings">
+    <!--
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout>
+                <BoxView HeightRequest="5" 
+             Style="{StaticResource box}"/>
+
+                <Grid ColumnDefinitions="*, Auto">
+                    <Label Grid.Column="0"
+               Text="{Binding SelectedTheme, StringFormat='Selected Theme: {0}'}"
+               VerticalOptions="Center"
+               FontSize="16"/>
+                    <Button Grid.Column="1"
+                Text="Change Theme"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                Clicked="Button_Clicked_1"
+                Padding="10, 0"
+                HeightRequest="30"
+                CornerRadius="4"
+                FontSize="14"/>
+                </Grid>
+
+                <BoxView HeightRequest="5" 
+                    Style="{StaticResource box}"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    -->
+</ContentPage>

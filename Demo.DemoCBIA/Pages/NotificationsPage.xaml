@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo.DemoCBIA.Pages.NotificationsPage"
+             Title="Notifications">
+    <StackLayout>
+        
+        <ListView x:Name="notificationsListView"
+                  ItemsSource="{Binding Notifications}" SeparatorVisibility="Default">
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            
+                            <HorizontalStackLayout Spacing="80">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Title}" HorizontalTextAlignment="Start"/>
+                                    <Label Text="{Binding Content}" HorizontalTextAlignment="Start"/>
+                                </VerticalStackLayout>
+                                <Label Text="{Binding Date}" />
+                            </HorizontalStackLayout>
+                            
+                            
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </StackLayout>
+</ContentPage>
