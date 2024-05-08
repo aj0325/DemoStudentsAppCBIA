@@ -26,25 +26,7 @@ Syncfusion key in App.xaml.cs
 
 Google Maps API key in AndroidManifest.xaml
 
-## Nuget Packages Installed
 
-DevExpress.Maui.Controls
-
-DevExpress.Maui.Core
-
-DevExpress.Maui.DataGrid
-
-DevExpress.Maui.Scheduler
-
-Microsoft.Maui.Controls
-
-Microsoft.Maui.Controls.Maps - version: 7.0.101
-
-Microsoft.Maui.Maps - version: 7.0.101
-
-Newtonsoft.Json
-
-Plugin.Maui.Calendar
 
 Syncfusion.Maui.Expander
 
