@@ -20,4 +20,9 @@ public partial class AccomodationsPage : ContentPage
 
         BindingContext = accommodationDetails;
     }
+    private async void MapButton_Clicked(object sender, EventArgs e)
+	{
+	    //await DisplayAlert("Clicked on maps", "Navigating to Map", "OK");
+	    await Navigation.PushAsync(new ResourcesMapPage("Building 1"));
+	}
 }
