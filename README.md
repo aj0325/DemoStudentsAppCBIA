@@ -25,12 +25,3 @@ https://github.com/syncfusion/maui-demos/tree/master/MAUI/PdfViewer
 Syncfusion key in App.xaml.cs
 
 Google Maps API key in AndroidManifest.xaml
-
-
-
-Syncfusion.Maui.Expander
-
-Syncfusion.Maui.PdfViewer
-
-
-
